@@ -1,7 +1,6 @@
 const nunjucks = require(`nunjucks`)
-const express = require ("express")
-const indexRouter = require ("./routes/index")
-
+const express = require("express")
+const indexRouter = require("./routes/index")
 
 const app = express()
 
@@ -12,12 +11,12 @@ nunjucks.configure('views', {
     express: app
 })
 
+app.use(express.static(`public`))
 app.use("/", indexRouter)
 
-app.use(express.static(`public`))
 
 app.get("/", (request, response) => {
-    response.render('index.njk', { title: 'hello from template'})
+    response.render('index.njk', { title: 'hello from template' })
 })
 
 
